@@ -3,35 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting to Roblox...</title>
+    <title>Redirecting...</title>
     <script>
-        // Function to get URL parameters
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
 
-        // Get placeId and gameInstanceId from URL
         const placeId = getQueryParam("placeId");
         const gameInstanceId = getQueryParam("gameInstanceId");
 
-        // If both parameters exist, redirect to the Roblox app
         if (placeId && gameInstanceId) {
-            const robloxUrl = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${gameInstanceId}`;
-            window.location.href = robloxUrl; // Redirect to the Roblox app
+            window.location.href = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${gameInstanceId}`;
         } else {
-            document.addEventListener("DOMContentLoaded", function () {
-                const messageContainer = document.getElementById("message");
-                messageContainer.innerHTML = `
-                    <h2>Invalid link. Missing placeId or gameInstanceId.</h2>
-                    <p>Join our Discord for help: <a href="https://discord.gg/cTb2mmDhpr" target="_blank">Click here</a></p>
-                `;
-            });
+            window.location.href = "https://discord.gg/cTb2mmDhpr";
         }
     </script>
 </head>
 <body>
-    <h2>Redirecting to Roblox...</h2>
-    <div id="message"></div>
+    <h2>Redirecting...</h2>
 </body>
 </html>
