@@ -1,44 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YUZHU JOINER</title>
+    <title>Redirecting...</title>
     <script>
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
 
-        function isMobile() {
-            return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        }
-
-        function redirectToRoblox(placeId, gameInstanceId) {
-            let robloxUrl = isMobile() 
-                ? `robloxmobile://placeId=${placeId}&gameInstanceId=${gameInstanceId}` 
-                : `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${gameInstanceId}`;
-
-            // Attempt to open the Roblox app
-            window.location.href = robloxUrl;
-
-            // Fallback: If the app doesn't open, redirect to the website
-            setTimeout(() => {
-                window.location.href = `https://www.roblox.com/games/${placeId}`;
-            }, 2000);
-        }
-
         const placeId = getQueryParam("placeId");
         const gameInstanceId = getQueryParam("gameInstanceId");
 
         if (placeId && gameInstanceId) {
-            redirectToRoblox(placeId, gameInstanceId);
+            window.location.href = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${gameInstanceId}`;
         } else {
             window.location.href = "https://discord.gg/Sby27MV6Ke";
         }
     </script>
 </head>
-<body>
-    <h2>Redirecting...</h2>
-</body>
-</html>
