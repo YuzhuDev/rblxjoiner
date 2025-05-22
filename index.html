@@ -1,23 +1,20 @@
-<!DOCTYPE html>
-<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Redirecting to Roblox...</title>
-  <script>
-    // Parse path: /placeId/jobId
-    const parts = window.location.pathname.split('/').filter(p => p);
-    const placeId = parts[0];
-    const jobId = parts[1];
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discard Hub</title>
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
 
-    if (placeId && jobId) {
-      const robloxLink = `roblox://placeId=${placeId}&gameInstanceId=${jobId}`;
-      window.location.href = robloxLink;
-    } else {
-      document.write("Invalid link.");
-    }
-  </script>
+        const placeId = getQueryParam("placeId");
+        const gameInstanceId = getQueryParam("gameInstanceId");
+
+        if (placeId && gameInstanceId) {
+            window.location.href = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${gameInstanceId}`;
+        } else {
+            window.location.href = "https://discord.gg/UsSR3hgTeB";
+        }
+    </script>
 </head>
-<body>
-  <p>Redirecting to Roblox...</p>
-</body>
-</html>
