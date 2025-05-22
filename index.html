@@ -1,20 +1,23 @@
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script>
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
+  <meta charset="UTF-8">
+  <title>Redirecting to Roblox...</title>
+  <script>
+    // Parse path: /placeId/jobId
+    const parts = window.location.pathname.split('/').filter(p => p);
+    const placeId = parts[0];
+    const jobId = parts[1];
 
-        const placeId = getQueryParam("placeId");
-        const gameInstanceId = getQueryParam("gameInstanceId");
-
-        if (placeId && gameInstanceId) {
-            window.location.href = `roblox://experiences/start?placeId=${placeId}&gameInstanceId=${gameInstanceId}`;
-        } else {
-            window.location.href = "https://discord.gg/Sby27MV6Ke";
-        }
-    </script>
+    if (placeId && jobId) {
+      const robloxLink = `roblox://placeId=${placeId}&gameInstanceId=${jobId}`;
+      window.location.href = robloxLink;
+    } else {
+      document.write("Invalid link.");
+    }
+  </script>
 </head>
+<body>
+  <p>Redirecting to Roblox...</p>
+</body>
+</html>
